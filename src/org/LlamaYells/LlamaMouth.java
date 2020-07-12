@@ -37,14 +37,15 @@ public class LlamaMouth implements Listener {
             //player.chat("I'm fishing at " + ChatColor.AQUA + playerLocStr(player) + ". " + ChatColor.RED + "Come get some!");
             
             String message = "I'm fishing at " + ChatColor.AQUA + playerLocStr(player) + ". " + ChatColor.RED + "Come get some!";
-            this.server.dispatchCommand(player, "say " + message);
+            String command = "say " + message;
+            this.server.dispatchCommand(player, command);
         }
     }
 
     public void closestEntityRunCommand(Player player, String entityName, String command) {
         String entitySelector = "@e[limit=1, sort=nearest, type=minecraft:" + entityName + ", distance=..8]";
-        String command = "execute as " + entitySelector + " run " + command;
-        this.server.dispatchCommand(player, command);
+        String serverCommand = "execute as " + entitySelector + " run " + command;
+        this.server.dispatchCommand(player, serverCommand);
     }
 
     @EventHandler
