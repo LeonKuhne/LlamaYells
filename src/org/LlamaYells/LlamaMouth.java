@@ -37,8 +37,7 @@ public class LlamaMouth implements Listener {
             //player.chat("I'm fishing at " + ChatColor.AQUA + playerLocStr(player) + ". " + ChatColor.RED + "Come get some!");
             
             String message = "I'm fishing at " + ChatColor.AQUA + playerLocStr(player) + ". " + ChatColor.RED + "Come get some!";
-            String command = "say " + message;
-            this.server.dispatchCommand(player, command);
+            this.server.dispatchCommand(player, "say " + message);
         }
     }
 
