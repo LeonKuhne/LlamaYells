@@ -9,4 +9,4 @@ main: org.LlamaYells.Main
 permissions:
   leeeleees.llamas.*:
     description: Players announce when they try to sit on a llama
-    default: op
+    default: true
