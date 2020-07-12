@@ -4,6 +4,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Llama;
 import org.bukkit.Location;
+import org.bukkit.Server;
 import org.bukkit.ChatColor;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.EventHandler;
@@ -17,6 +18,13 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 
 public class LlamaMouth implements Listener {
 
+    private Server server;
+
+    public LlamaMouth(Server server) {
+        super();
+        this.server = server;
+    }
+
     private static String playerLocStr(Player player) {
         Location loc = player.getLocation();
         return "" + ChatColor.GREEN + loc.getBlockX() + ", " + loc.getBlockZ();
@@ -25,14 +33,19 @@ public class LlamaMouth implements Listener {
     @EventHandler
     public void stopFishing(PlayerFishEvent event) {
         Player player = event.getPlayer();
-        if (event.getState() == PlayerFishEvent.State.FISHING) {
-            player.chat("I'm fishing at " + ChatColor.AQUA + playerLocStr(player) + ". " + ChatColor.RED + "Come get some!");
+        if (event.getState() == PlayerFishEvent.State.REEL_IN) {
+            //player.chat("I'm fishing at " + ChatColor.AQUA + playerLocStr(player) + ". " + ChatColor.RED + "Come get some!");
+            
+            String message = "I'm fishing at " + ChatColor.AQUA + playerLocStr(player) + ". " + ChatColor.RED + "Come get some!";
+            String command = "say " + message;
+            this.server.dispatchCommand(player, command);
         }
     }
 
     public void closestEntityRunCommand(Player player, String entityName, String command) {
         String entitySelector = "@e[limit=1, sort=nearest, type=minecraft:" + entityName + ", distance=..8]";
-        player.performCommand("execute as " + entitySelector + " run " + command);
+        String command = "execute as " + entitySelector + " run " + command;
+        this.server.dispatchCommand(player, command);
     }
 
     @EventHandler

@@ -9,7 +9,7 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getServer().getPluginManager().registerEvents(new LlamaMouth(), this);
+        getServer().getPluginManager().registerEvents(new LlamaMouth(getServer()), this);
         getLogger().info("starting");
     }
 
