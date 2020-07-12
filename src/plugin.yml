@@ -7,6 +7,6 @@ website: denmc.online
 main: org.LlamaYells.Main
 
 permissions:
-  leeeleees.llamas.*:
+  leeeleees.llamas:
     description: Players announce when they try to sit on a llama
     default: true
