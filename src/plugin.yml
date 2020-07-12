@@ -1,9 +1,10 @@
 name: LlamaYells
-version: 0.1
+version: 1.0
 description: The llamas yell out their location when you ride them
 author: leee leee
 website: denmc.online
 
 main: org.LlamaYells.Main
 
-permissions: {}
+permissions:
+    leeeleees.llamas:
